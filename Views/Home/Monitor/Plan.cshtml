@@ -1,0 +1,108 @@
+@{
+    var planImage = "/images/plan1.png";
+}
+
+<header>
+    Monitor plan
+</header>
+
+<div>
+    <div class="plan">
+        <img src="@planImage" alt="Sample Image" width="900px">
+    </div>
+    <div class="sensor">
+        <img src="~/images/img.png" class="drag" width="200px">
+        <img src="~/images/img.png" class="drag" width="200px">
+        <h1><b class="drag">Sensor</b></h1>
+    </div>
+    @* <img src="@~/images/img.png" alt="Sample Image" width="300px"> *@
+</div>
+
+<div id="table_title_region">
+    <p1>센서ID</p1>
+    <p1>연기</p1>
+    <p1>온도</p1>
+    <p1>가스</p1>
+</div>
+<div id="table_item_region">
+</div>
+
+
+
+    <style type="text/css">
+        .drag {
+            position: relative;
+            cursor: hand;
+            z-index: 100;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        var dragobject = {
+            z: 0, x: 0, y: 0, offsetx: null, offsety: null, targetobj: null, dragapproved: 0,
+            initialize: function () {
+                document.onmousedown = this.drag
+                document.onmouseup = function () { this.dragapproved = 0 }
+            },
+            drag: function (e) {
+                var evtobj = window.event ? window.event : e
+                this.targetobj = window.event ? event.srcElement : e.target
+                if (this.targetobj.className == "drag") {
+                    this.dragapproved = 1
+                    if (isNaN(parseInt(this.targetobj.style.left))) { this.targetobj.style.left = 0 }
+                    if (isNaN(parseInt(this.targetobj.style.top))) { this.targetobj.style.top = 0 }
+                    this.offsetx = parseInt(this.targetobj.style.left)
+                    this.offsety = parseInt(this.targetobj.style.top)
+                    this.x = evtobj.clientX
+                    this.y = evtobj.clientY
+                    if (evtobj.preventDefault)
+                        evtobj.preventDefault()
+                    document.onmousemove = dragobject.moveit
+                }
+            },
+            moveit: function (e) {
+                var evtobj = window.event ? window.event : e
+                if (this.dragapproved == 1) {
+                    this.targetobj.style.left = this.offsetx + evtobj.clientX - this.x + "px"
+                    this.targetobj.style.top = this.offsety + evtobj.clientY - this.y + "px"
+                    return false
+                }
+            }
+        }
+
+        dragobject.initialize()
+
+    </script>
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+<style>
+    #table_title_region {
+        background: yellow;
+        overflow: hidden;
+        width: 500px;
+    }
+
+    p1 {
+        float: left;
+        padding-left: 60px;
+    }
+    .plan{
+        position: relative;
+    }
+    .sensor{
+        position: relative;
+        top: -100px;
+    }
+</style>
