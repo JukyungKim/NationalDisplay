@@ -10,7 +10,9 @@ namespace NationalDisplay.Models;
 public class PipeClient
 {
     private static int numClients = 4;
-
+    public static int command = 4;
+    public static int sensorId = 0;
+    public static int planId = 0;
     public static async void Start()
     {
         Console.WriteLine("Pipe client starts");
@@ -41,16 +43,25 @@ public class PipeClient
                         // The client security token is sent with the first write.
                         // Send the name of the file whose contents are returned
                         // by the server.
-                        ss.WriteString("c:\\textfile.txt");
-                        
+                        // ss.WriteString("c:\\textfile.txt");      
 
-                        // Print the file to the screen.
-                        Console.WriteLine(ss.ReadString());
+                        List<byte> data = new List<byte>();
+                        if(command == 1)    PipeProtocol.sendSensorInfo(planId, data);
+                        else if(command == 2) PipeProtocol.sendSensorData(sensorId, data);
+                        else if(command == 3) PipeProtocol.sendPlanImage(planId, data);
+                        else if(command == 4) PipeProtocol.sendPlanInfo(data);
+                        ss.WriteByte(data);
+                        ss.ReadByte();
+                        // // Print the file to the screen.
+                        // Console.WriteLine(ss.ReadString());
+
+                        Console.WriteLine("Complete send data");
                     }
                     else
                     {
                         Console.WriteLine("Server could not be verified.");
                     }
+
                     pipeClient.Close();
                     // Give the client process some time to display results before exiting.
                     Thread.Sleep(4000);
@@ -140,9 +151,11 @@ public class StreamString
         len += ioStream.ReadByte();
         var inBuffer = new byte[len];
         ioStream.Read(inBuffer, 0, len);
+        Console.WriteLine(streamEncoding.GetString(inBuffer));
 
         return streamEncoding.GetString(inBuffer);
     }
+
 
     public int WriteString(string outString)
     {
@@ -158,6 +171,21 @@ public class StreamString
         ioStream.Flush();
 
         return outBuffer.Length + 2;
+    }
+
+    public byte[] ReadByte()
+    {
+        int len;
+        len = ioStream.ReadByte() * 256;
+        len += ioStream.ReadByte();
+        var inBuffer = new byte[len];
+        ioStream.Read(inBuffer, 0, len);
+        Console.Write("Received byte : ");
+        foreach(var d in inBuffer){
+            Console.Write("{0} ", d);
+        }
+        Console.WriteLine("");
+        return inBuffer;
     }
 
     public void WriteByte(List<byte> data)

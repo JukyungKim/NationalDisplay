@@ -16308,8 +16308,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Kim\\Project\\.NET\\NationalDisplay\\Views\\Home\\Monitor\\PlanList.cshtml",
+      "TargetPath": "Views\\Home\\Monitor\\PlanList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Kim\\Project\\.NET\\NationalDisplay\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Kim\\Project\\.NET\\NationalDisplay\\Views\\Home\\Monitor\\Plan.cshtml",
+      "TargetPath": "Views\\Home\\Monitor\\Plan.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16330,11 +16340,6 @@
     {
       "FilePath": "d:\\Kim\\Project\\.NET\\NationalDisplay\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Kim\\Project\\.NET\\NationalDisplay\\Views\\Home\\Control\\Plan.cshtml",
-      "TargetPath": "Views\\Home\\Control\\Plan.cshtml",
       "FileKind": "mvc"
     }
   ],
