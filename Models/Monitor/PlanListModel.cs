@@ -3,11 +3,16 @@ namespace NationalDisplay.Models;
 
 public class PlanListModel{
     List<PlanInfo> planInfoList = new List<PlanInfo>();
+    
     public PlanModel LoadPlanImage(string id)
     {
         Console.WriteLine("Load plan : " + id);
 
         PlanModel model = new PlanModel();
+
+        PipeClient.command = 3;
+        PipeClient.planId = id;
+        PipeClient.Start();
 
         // 플랫폼에서 통신으로 도면 정보, 도면 ID와 일치하는 센서 가져오기
         // 센서에는 도면 ID가 포함되어 있다.
@@ -19,6 +24,7 @@ public class PlanListModel{
     {
         planInfoList.Clear();
 
+        PipeClient.command = 4;
         PipeClient.Start();
         // 도면 개수 확인하기
         // 도면 개수 만큼 planInfoList.Add(LoadPlanInfo)

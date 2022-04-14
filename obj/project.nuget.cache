@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "LJX7ioUMRw9zeab9c4tpuNxVtTgpjvJ5KGl+mFZbCqA/SOFzDqe3TTm97iESwlkcmqOaNY8KgaYlxHLa34mmQw==",
+  "dgSpecHash": "P2E7r18gEIrQY4/JY4PLnFFiYJ/5Cka9MuvPmhMegWas3TU7BzdIcY234wVRQVu/zqc8mzX1K7xWZGsl4laBzw==",
   "success": true,
-  "projectFilePath": "D:\\kim\\project\\.net\\NationalDisplay\\NationalDisplay.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Kim\\Project\\.NET\\NationalDisplay\\NationalDisplay.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\kim\\project\\.net\\NationalDisplay\\NationalDisplay.csproj": {}
+    "D:\\Kim\\Project\\.NET\\NationalDisplay\\NationalDisplay.csproj": {}
   },
   "projects": {
-    "D:\\kim\\project\\.net\\NationalDisplay\\NationalDisplay.csproj": {
+    "D:\\Kim\\Project\\.NET\\NationalDisplay\\NationalDisplay.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\kim\\project\\.net\\NationalDisplay\\NationalDisplay.csproj",
+        "projectUniqueName": "D:\\Kim\\Project\\.NET\\NationalDisplay\\NationalDisplay.csproj",
         "projectName": "NationalDisplay",
-        "projectPath": "D:\\kim\\project\\.net\\NationalDisplay\\NationalDisplay.csproj",
+        "projectPath": "D:\\Kim\\Project\\.NET\\NationalDisplay\\NationalDisplay.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\kim\\project\\.net\\NationalDisplay\\obj\\",
+        "outputPath": "D:\\Kim\\Project\\.NET\\NationalDisplay\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -45,6 +45,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

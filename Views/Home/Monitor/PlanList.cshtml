@@ -1,12 +1,14 @@
-@model NationalDisplay.Controllers.PlanListController
+@model NationalDisplay.Controllers.Plan
+
+
 @{
 
 }
 
-
-<script src="~/js/monitor/planlist.js"></script>
-<link rel="stylesheet" href="~/css/monitor/planlist.css">
-
+<head>
+    <script src="~/js/Monitor/planlist.js"></script>
+    <link rel="stylesheet" href="~/css/monitor/planlist.css">
+</head>
 
 <body>
     <div id="wrapper">
@@ -22,22 +24,21 @@
                 <th>호</th>
                 <th>불러오기</th>
             </tr>
-            @for (int i = 0; i < 10; i++)
+            @foreach(var info in Model.planList)
             {
                 <tr onclick="showHideRow('hidden_row2');">
-                    <td>1</td>
-                    <td>대전</td>
-                    <td>스마트</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>1</td>
+                    <td>@info[0]</td>
+                    <td>@info[1]</td>
+                    <td>@info[2]</td>
+                    <td>@info[3]</td>
+                    <td>@info[4]</td>
+                    <td>@info[5]</td>
                     <td>
                         <form asp-controller="PlanList" asp-action="LoadPlan" method="post">
-                            <input type="hidden" value="도면1" name="id" />
+                            <input type="hidden" value=@info[0] name="id" />
                             <input id="load_plan" type='submit' value="불러오기" />
                         </form>
                     </td>
-
                 </tr>
             }
 

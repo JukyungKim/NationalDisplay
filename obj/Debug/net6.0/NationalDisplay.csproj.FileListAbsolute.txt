@@ -24,3 +24,10 @@ D:\Kim\Project\.NET\NationalDisplay\obj\Debug\net6.0\NationalDisplay.dll
 D:\Kim\Project\.NET\NationalDisplay\obj\Debug\net6.0\ref\NationalDisplay.dll
 D:\Kim\Project\.NET\NationalDisplay\obj\Debug\net6.0\NationalDisplay.pdb
 D:\Kim\Project\.NET\NationalDisplay\obj\Debug\net6.0\NationalDisplay.genruntimeconfig.cache
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\System.Drawing.Common.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\Kim\Project\.NET\NationalDisplay\obj\Debug\net6.0\NationalDisplay.csproj.CopyComplete
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\libman.json

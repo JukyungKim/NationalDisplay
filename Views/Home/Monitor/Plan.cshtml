@@ -1,9 +1,14 @@
+
 @{
-    var planImage = "/images/plan1.png";
+    var planImage = "/images/plan.png";
 }
 
-<link rel="stylesheet" href="~/css/monitor/plan.css">
-<script src="~/js/monitor/plan.js"></script>
+<head>
+    <link rel="stylesheet" href="~/css/monitor/plan.css">
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/Monitor/plan.js?var=2"></script>
+</head>
+
 
 <body class="region_body">
     <div class="container">
@@ -28,8 +33,6 @@
 
                 <div class="region_graph">
                     <div class="chart_container">
-
-
                         <div class="flex-wrapper">
                             <div class="single-chart">
                                 <svg viewBox="0 0 36 36" class="circular-chart orange">
@@ -90,14 +93,26 @@
             <div class="region_sensor">
                 @for (int i = 0; i < 12; i++)
                 {
+                    string temp = "temp";
+                    string smoke = "smoke";
+                    string gas = "gas";
+
+                    temp += i.ToString();
+                    smoke += i.ToString();
+                    gas += i.ToString();
+
                     <a href="#" class="myButton">
                         <div class="sensor_id">Sensor ID</div>
                         <div class="sensor_data_1">
-                            <div class="sensor_data_temp">온도</div>
+                            <div class="sensor_data_temp" id=@temp>온도</div>
+
+
                             <div class="sensor_data_smoke">연기</div>
+                            <div id=@smoke></div>
                         </div>
                         <div class="sensor_data_2">
                             <div class="sensor_data_gas">가스</div>
+                            <div id=@gas></div>
                             <div class="sensor_data_vib">진동</div>
                         </div>
                     </a>
