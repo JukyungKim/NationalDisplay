@@ -123,19 +123,52 @@ public class PipeProtocol
 
     public static void receiveSensorData(byte[] data)
     {
-        Console.WriteLine("Received sensor data");
+        Console.WriteLine("Received sensor data:" + data.Length);
         foreach(var d in data){
             Console.Write(d + " ");
         }
         Console.WriteLine();
         
-        SensorData s = new SensorData();
-        s.id = 1;
-        s.gas = 2;
-        s.smoke = 3;
-        s.temp = 4;
-        // PlanController.sensorList.sensorList.Add(s);
-        
+        int sensorNumber = (data.Length - 1) / 18;
+
+        for(int i = 0; i < sensorNumber; i++){
+            int num = (18 * i) + 1; // 18 : id(6byte) + 연기,온도,가스(4,4,4)
+            SensorData s = new SensorData();
+
+            s.id = (ulong)((data[num]) | (data[num + 1] << 8) | (data[num + 2] << 16) 
+                | (data[num + 3] << 24) | (data[num + 4] << 32) | (data[num + 5] << 40));
+            num += 6;
+
+            s.smoke = (int)((data[num]) | (data[num + 1] << 8) | (data[num + 2] << 16) 
+                | (data[num + 3] << 24));
+            num += 4;          
+
+            s.temp = (int)((data[num]) | (data[num + 1] << 8) | (data[num + 2] << 16) 
+                | (data[num + 3] << 24));
+            num += 4;
+
+            s.gas = (int)((data[num]) | (data[num + 1] << 8) | (data[num + 2] << 16) 
+                | (data[num + 3] << 24));
+
+            // 중복된 센서 ID 있으면 추가 안함
+            bool existId = false;
+            int index = 0;
+            foreach(var sensor in PlanController.sensorList){
+                if(sensor.id == s.id){
+                    existId = true;
+                    break;
+                }
+                index++;
+            }
+            if(!existId){
+                PlanController.sensorList.Add(s);
+            }
+            else{
+                PlanController.sensorList[index].smoke = s.smoke;
+                PlanController.sensorList[index].temp = s.temp;
+                PlanController.sensorList[index].gas = s.gas;
+            }       
+        }
     }
     public static void sendSensorInfo(string planId, List<byte> data)
     {

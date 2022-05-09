@@ -4,9 +4,11 @@
 }
 
 <head>
-    <link rel="stylesheet" href="~/css/monitor/plan.css">
+    <link rel="stylesheet" href="~/css/monitor/plan.css?after">
     <script src="~/js/signalr/dist/browser/signalr.js"></script>
     <script src="~/js/Monitor/plan.js?var=2"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 
@@ -16,17 +18,19 @@
             재난 관리 관제 시스템
         </div>
         <div class="region_monitor">
-
-
             <div class="region_plan_graph">
                 <div class="region_plan">
                     <div class="plan">
                         <img src="@planImage" style="border-radius: 20px;" alt="Sample Image" width="100%" height="100%">
                     </div>
-                    <div class="sensor">
-                        <img src="~/images/img.png" class="drag" width="200px">
-                        <img src="~/images/img.png" class="drag" width="200px">
-                        <h1><b class="drag">Sensor</b></h1>
+                    @* 도면 안에 센서 *@
+                    <div class="draggable" class="ui-widget-content">
+                        
+                            <div class="sensor_each_plan" id=sensor_id_plan>Sensor ID</div>
+                        
+                        @* <img src="~/images/img.png" class="drag" width="200px">
+                            <img src="~/images/img.png" class="drag" width="200px">
+                            <h1><b class="drag">Sensor</b></h1> *@
                     </div>
                     @* <img src="@~/images/img.png" alt="Sample Image" width="300px"> *@
                 </div>
@@ -39,10 +43,10 @@
                                     <path class="circle-bg" d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+                                    <path class="circle" id="temp" stroke-dasharray="0, 100" d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="percentage">30%</text>
+                                    <text x="18" y="20.35" class="percentage" id="temp_value">0%</text>
                                 </svg>
                                 <div class="chart_name">온도</div>
                             </div>
@@ -52,10 +56,10 @@
                                     <path class="circle-bg" d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle" stroke-dasharray="60, 100" d="M18 2.0845
+                                    <path class="circle" id="smoke" stroke-dasharray="0, 100" d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="percentage">24ºC</text>
+                                    <text x="18" y="20.35" class="percentage" id="smoke_value">0ºC</text>
                                 </svg>
                                 <div class="chart_name">연기</div>
                             </div>
@@ -65,15 +69,15 @@
                                     <path class="circle-bg" d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <path class="circle" stroke-dasharray="90, 100" d="M18 2.0845
+                                    <path class="circle" id="gas" stroke-dasharray="0, 100" d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831" />
-                                    <text x="18" y="20.35" class="percentage">90%</text>
+                                    <text x="18" y="20.35" class="percentage" id="gas_value">0%</text>
                                 </svg>
                                 <div class="chart_name">가스</div>
                             </div>
 
-                            <div class="single-chart">
+                            @* <div class="single-chart">
                                 <svg viewBox="0 0 36 36" class="circular-chart red">
                                     <path class="circle-bg" d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
@@ -84,7 +88,7 @@
                                     <text x="18" y="20.35" class="percentage">75%</text>
                                 </svg>
                                 <div class="chart_name">진동</div>
-                            </div>
+                            </div> *@
                         </div>
                     </div>
                 </div>
@@ -96,34 +100,29 @@
                     string temp = "temp";
                     string smoke = "smoke";
                     string gas = "gas";
+                    string id = "id";
 
+                    id += i.ToString();
                     temp += i.ToString();
                     smoke += i.ToString();
                     gas += i.ToString();
 
-                    <a href="#" class="myButton">
-                        <div class="sensor_id">Sensor ID</div>
+                    <a href="#" class="myButton" onclick=@(String.Format("onClickSensorItem({0})", i))>
+                        <div class="sensor_id" id=@id>Sensor ID</div>
                         <div class="sensor_data_1">
                             <div class="sensor_data_temp" id=@temp>온도</div>
-
-
-                            <div class="sensor_data_smoke">연기</div>
-                            <div id=@smoke></div>
+                            <div class="sensor_data_smoke" id=@smoke>연기</div>
                         </div>
                         <div class="sensor_data_2">
-                            <div class="sensor_data_gas">가스</div>
-                            <div id=@gas></div>
-                            <div class="sensor_data_vib">진동</div>
+                            <div class="sensor_data_gas" id=@("gas" + i.ToString())>가스</div>
+                            @* <div class="sensor_data_vib">진동</div> *@
                         </div>
                     </a>
                 }
             </div>
         </div>
     </div>
-
-
 </body>
-
 
 <style type="text/css">
     .drag {
@@ -131,6 +130,7 @@
         cursor: hand;
         z-index: 100;
     }
+
 </style>
 
 <script type="text/javascript">
@@ -169,4 +169,7 @@
 
     dragobject.initialize()
 
+    $(function(){
+        $(".draggable").draggable();
+    });
 </script>

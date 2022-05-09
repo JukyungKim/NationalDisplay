@@ -118,7 +118,7 @@ p1 {
     float: left;
 }
 .sensor_data_smoke{
-    margin-left: 100px;
+    margin-left: 120px;
 }
 
 .sensor_data_gas{
@@ -230,5 +230,42 @@ p1 {
 .myButton:active {
 	position:relative;
 	top:1px;
+}
+
+/* 도면 안에 센서 */
+.sensor_plan {
+	box-shadow: 3px 4px 0px 0px #035fb4;
+	background:linear-gradient(to bottom, #3c7cbd 5%, #0966c4 100%);
+	background-color:#2782dd;
+	border-radius:10px;
+	border:1px solid #3586d8;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:0px 0px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
+    width: 250px;
+    height: 150px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+}
+
+.draggable { 
+  width: 120px; 
+  height: 60px; 
+  padding: 0.5em; 
+  border: 2px solid black;
+  background-color: gray;
+}
+
+.sensor_each_plan{
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  margin-top: 10%
 }
 

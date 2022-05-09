@@ -40,7 +40,7 @@ app.MapControllerRoute(
 // };
 // app.UseWebSockets(webSocketOptions);
 
-app.MapHub<ChatHub>("/chatHub");
+app.MapHub<SensorHub>("/sensorHub");
 
 Console.WriteLine("app run");
 app.Run();

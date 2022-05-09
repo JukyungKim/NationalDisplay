@@ -1,10 +1,10 @@
-window.onload = function(){
-    init();
-}
+// window.onload = function(){
+//     init();
+// }
 
-function init() {
-    alert("안녕~ 세계야!!");
-}
+// function init() {
+//     alert("안녕~ 세계야!!");
+// }
         
         
         // // 테이블의 Row 클릭시 값 가져오기
