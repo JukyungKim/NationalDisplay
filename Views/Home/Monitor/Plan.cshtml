@@ -1,12 +1,14 @@
 
+
 @{
     var planImage = "/images/plan.png";
+    var sensorList = Model;
 }
 
 <head>
     <link rel="stylesheet" href="~/css/monitor/plan.css?after">
     <script src="~/js/signalr/dist/browser/signalr.js"></script>
-    <script src="~/js/Monitor/plan.js?var=2"></script>
+    <script src="~/js/Monitor/plan.js?after"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
@@ -19,22 +21,21 @@
         </div>
         <div class="region_monitor">
             <div class="region_plan_graph">
-                <div class="region_plan">
+                <div class="region_plan" id="region_plan_id">
                     <div class="plan">
                         <img src="@planImage" style="border-radius: 20px;" alt="Sample Image" width="100%" height="100%">
                     </div>
                     @* 도면 안에 센서 *@
-                    <div class="draggable" class="ui-widget-content">
+                    @* <div class="draggable" id="sensor_list_in_plan"> *@
                         
-                            <div class="sensor_each_plan" id=sensor_id_plan>Sensor ID</div>
+                            @* <div class="sensor_each_plan" id="sensor_id_plan">ID</div> *@
                         
                         @* <img src="~/images/img.png" class="drag" width="200px">
                             <img src="~/images/img.png" class="drag" width="200px">
                             <h1><b class="drag">Sensor</b></h1> *@
-                    </div>
+                    @* </div> *@
                     @* <img src="@~/images/img.png" alt="Sample Image" width="300px"> *@
                 </div>
-
                 <div class="region_graph">
                     <div class="chart_container">
                         <div class="flex-wrapper">

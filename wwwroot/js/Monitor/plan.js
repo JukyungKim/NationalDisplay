@@ -4,6 +4,7 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/sensorHub").build(
 var sensorItems = document.getElementsByClassName("myButton");
 var sensorIndex = 0;
 var sensorArray = new Array(20);
+var selectedSensorIndex = 0;
 
 window.onload = function(){
     init();
@@ -39,6 +40,8 @@ function onClickSensorItem(sensorIndex){
     // document.getElementById("smoke").setAttribute('stroke-dasharray', "10, 100");
     // document.getElementById("temp").setAttribute('stroke-dasharray', "10, 100");
     // document.getElementById("gas").setAttribute('stroke-dasharray', "10, 100");
+
+    selectedSensorIndex = sensorIndex;
 
     document.getElementById("smoke").setAttribute('stroke-dasharray', sensorArray[sensorIndex].smoke + "," + "100");
     document.getElementById("temp").setAttribute('stroke-dasharray', sensorArray[sensorIndex].temp + "," + "100");
@@ -78,10 +81,40 @@ connection.on("ReceiveSensorData", function (sensor, index) {
     sensorArray[index].smoke = sensor[1];
     sensorArray[index].temp = sensor[2];
     sensorArray[index].gas = sensor[3];
-
     
     console.log("sensor data " + index + " : " + sensorArray[index].smoke + " " + sensorArray[index].temp + " " + sensorArray[index].gas);
     
+    var id = `${sensor[0]}`;
+    if(document.getElementById(id) == null){
+        var tag = document.getElementById("region_plan_id");
+        var newTag = document.createElement('div');
+        newTag.setAttribute('id', id);
+        newTag.setAttribute('class', 'draggable');
+        newTag.innerHTML = `Sensor ID : ${sensor[0]}`;
+        // newTag.style.cssText = `
+        //     width: 120px; 
+        //     height: 60px; 
+        //     padding: 0.5em; 
+        //     border: 2px solid black;
+        //     background-color: gray;
+        //     `;
+
+        tag.appendChild(newTag);
+        dragobject.initialize()
+    
+        $(function(){
+            $(".draggable").draggable();
+        });
+    }
+    
+    document.getElementById("smoke").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].smoke + "," + "100");
+    document.getElementById("temp").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].temp + "," + "100");
+    document.getElementById("gas").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].gas + "," + "100");
+
+    document.getElementById("smoke_value").textContent = sensorArray[selectedSensorIndex].smoke + "%";
+    document.getElementById("temp_value").textContent = sensorArray[selectedSensorIndex].temp + "ºC";
+    document.getElementById("gas_value").textContent = sensorArray[selectedSensorIndex].gas + "%";
+
     // var li = document.createElement("li");
     // document.getElementById("messagesList").appendChild(li);
     // document.getElementById("temp" + message).textContent = `온도:${user}`;// `${user} says ${message}`;

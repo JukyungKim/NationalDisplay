@@ -39,9 +39,11 @@ public class PlanListController : Controller
         PlanListModel planList = new PlanListModel();
         PlanModel planModel = planList.LoadPlanImage(id);
 
+
+
         while(!PipeClient.sendComplete);
 
-        return View("views/home/monitor/plan.cshtml", planModel);
+        return View("views/home/monitor/plan.cshtml", PlanController.sensorList);
     }
 
     public IActionResult LoadPlanList()
