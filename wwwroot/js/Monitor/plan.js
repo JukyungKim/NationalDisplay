@@ -60,6 +60,12 @@ function requestSensorData(){
     });
 }
 
+function saveSensorPosition(id, x, y){
+    connection.invoke("SaveSensorPosition", id, x, y).catch(function (err){
+        return console.error(err.toString());
+    });
+}
+
 setInterval(() => { 
     // console.log("Request sensor data");
     requestSensorData(); 
@@ -72,6 +78,14 @@ connection.start().then(function () {
 });
 
 connection.on("ReceiveSensorData", function (sensor, index) {
+    document.getElementById("id" + index).parentElement.style.cssText = `
+    box-shadow: 3px 4px 0px 0px #035fb4;
+	background:linear-gradient(to bottom, #3c7cbd 5%, #0966c4 100%);
+	background-color:#2782dd;
+	border:1px solid #3586d8;
+	text-shadow:0px 1px 0px #528ecc;
+    `;
+
     document.getElementById("id" + index).textContent = `Sensor ID  ${sensor[0]}`;
     document.getElementById("smoke" + index).textContent = `연기:${sensor[1]}`;
     document.getElementById("temp" + index).textContent = `온도:${sensor[2]}`;
@@ -91,20 +105,22 @@ connection.on("ReceiveSensorData", function (sensor, index) {
         newTag.setAttribute('id', id);
         newTag.setAttribute('class', 'draggable');
         newTag.innerHTML = `Sensor ID : ${sensor[0]}`;
-        // newTag.style.cssText = `
-        //     width: 120px; 
-        //     height: 60px; 
-        //     padding: 0.5em; 
-        //     border: 2px solid black;
-        //     background-color: gray;
-        //     `;
-
+        newTag.style.cssText = `
+            position: absolute;
+            left: ${sensor[4]}px;
+            top: ${sensor[5]}px;
+            `;
+        newTag.addEventListener('mouseup', (event) => {
+            saveSensorPosition(Number(sensor[0]), Number(newTag.getBoundingClientRect().left), Number(newTag.getBoundingClientRect().top));
+            console.log("mouse up event:" + event.clientX + " " + event.clientY);
+        })
         tag.appendChild(newTag);
-        dragobject.initialize()
-    
+
+        dragobject.initialize();
         $(function(){
             $(".draggable").draggable();
         });
+        // dragobject.move(300, 300);
     }
     
     document.getElementById("smoke").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].smoke + "," + "100");
@@ -125,3 +141,46 @@ connection.on("ReceiveSensorData", function (sensor, index) {
     // li.textContent = `${user} says ${message}`;
 });
 
+
+var dragobject = {
+    z: 0, x: 0, y: 0, offsetx: null, offsety: null, targetobj: null, dragapproved: 0,
+    initialize: function () {
+        document.onmousedown = this.drag
+        document.onmouseup = function () { this.dragapproved = 0 }
+    },
+    drag: function (e) {
+        var evtobj = window.event ? window.event : e
+        this.targetobj = window.event ? event.srcElement : e.target
+        if (this.targetobj.className == "drag") {
+            this.dragapproved = 1
+            if (isNaN(parseInt(this.targetobj.style.left))) { this.targetobj.style.left = 0 }
+            if (isNaN(parseInt(this.targetobj.style.top))) { this.targetobj.style.top = 0 }
+            this.offsetx = parseInt(this.targetobj.style.left)
+            this.offsety = parseInt(this.targetobj.style.top)
+            this.x = evtobj.clientX
+            this.y = evtobj.clientY
+            if (evtobj.preventDefault)
+                evtobj.preventDefault()
+            document.onmousemove = dragobject.moveit
+        }
+    },
+    moveit: function (e) {
+        var evtobj = window.event ? window.event : e
+        if (this.dragapproved == 1) {
+            this.targetobj.style.left = this.offsetx + evtobj.clientX - this.x + "px"
+            this.targetobj.style.top = this.offsety + evtobj.clientY - this.y + "px"
+            
+            return false
+        }   
+    },
+    move: function (x, y) {
+        this.targetobj.style.left = x + "px"
+        this.targetobj.style.top = y + "px"
+    }
+}
+
+dragobject.initialize()
+
+$(function(){
+    $(".draggable").draggable();
+});

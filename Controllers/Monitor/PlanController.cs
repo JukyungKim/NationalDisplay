@@ -60,10 +60,64 @@ public class SensorHub: Hub
             list.Add(s.temp.ToString());
             list.Add(s.gas.ToString());
 
+            int[] pos = LoadSensorPosition((int)s.id);
+            list.Add(pos[0].ToString());
+            list.Add(pos[1].ToString());
+
             await Clients.All.SendAsync("ReceiveSensorData", list, index);
             index++;
             
         }
+    }
+
+    public async Task SaveSensorPosition(int id, int x, int y)
+    {
+        byte[] buf = new byte[12];
+        buf[0] = (byte)(id >> 24);
+        buf[1] = (byte)(id >> 16);
+        buf[2] = (byte)(id >> 8);
+        buf[3] = (byte)(id >> 0);
+        buf[4] = (byte)(x >> 24);
+        buf[5] = (byte)(x >> 16);
+        buf[6] = (byte)(x >> 8);
+        buf[7] = (byte)(x >> 0);
+        buf[8] = (byte)(y >> 24);
+        buf[9] = (byte)(y >> 16);
+        buf[10] = (byte)(y >> 8);
+        buf[11] = (byte)(y >> 0);
+        string folderPath = "wwwroot/sensor_pos/";
+        DirectoryInfo di = new DirectoryInfo(folderPath);
+        if(!di.Exists){
+            di.Create();
+        }
+        FileStream fs = new FileStream(String.Format("wwwroot/sensor_pos/sensor{0}", id), FileMode.OpenOrCreate, FileAccess.Write);
+        fs.Write(buf, 0, 12);
+        fs.Close();
+        Console.WriteLine("SaveSensorPosition:{0}, {1}, {2}", id, x, y);
+    }
+
+    public int[] LoadSensorPosition(int id)
+    {
+        int[] pos = new int[2];
+
+        string folderPath = "wwwroot/sensor_pos/";
+        string filePath = String.Format("wwwroot/sensor_pos/sensor{0}", id);
+        DirectoryInfo di = new DirectoryInfo(folderPath);
+        if(!di.Exists || !File.Exists(filePath)){
+            pos[0] = 100;
+            pos[1] = 100;
+            return pos;
+        }
+        FileStream fs = new FileStream(filePath, FileMode.Open);
+        BinaryReader br = new BinaryReader(fs);
+        byte[] buf = br.ReadBytes(12);
+
+        pos[0] = (buf[4] << 24) | (buf[5] << 16) | (buf[6] << 8) | (buf[7] << 0);
+        pos[1] = (buf[8] << 24) | (buf[9] << 16) | (buf[10] << 8) | (buf[11] << 0);
+
+        // Console.WriteLine("LoadSensorPosition:{0} {1}", pos[0], pos[1]);
+        fs.Close();
+        return pos;
     }
 }
 

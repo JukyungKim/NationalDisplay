@@ -136,7 +136,7 @@
 
 <script type="text/javascript">
 
-    var dragobject = {
+    @* var dragobject = {
         z: 0, x: 0, y: 0, offsetx: null, offsety: null, targetobj: null, dragapproved: 0,
         initialize: function () {
             document.onmousedown = this.drag
@@ -156,6 +156,7 @@
                 if (evtobj.preventDefault)
                     evtobj.preventDefault()
                 document.onmousemove = dragobject.moveit
+                console.log("move" + this.x);
             }
         },
         moveit: function (e) {
@@ -163,8 +164,13 @@
             if (this.dragapproved == 1) {
                 this.targetobj.style.left = this.offsetx + evtobj.clientX - this.x + "px"
                 this.targetobj.style.top = this.offsety + evtobj.clientY - this.y + "px"
+                
                 return false
-            }
+            }   
+        },
+        move: function (x, y) {
+            this.targetobj.style.left = x + "px"
+            this.targetobj.style.top = y + "px"
         }
     }
 
@@ -172,5 +178,5 @@
 
     $(function(){
         $(".draggable").draggable();
-    });
+    }); *@
 </script>
