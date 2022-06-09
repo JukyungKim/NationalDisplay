@@ -128,6 +128,7 @@ public class PipeProtocol
             Console.Write(d + " ");
         }
         Console.WriteLine();
+        PlanController.sensorList = new List<SensorData>();
         
         int sensorNumber = (data.Length - 1) / 18;
 
