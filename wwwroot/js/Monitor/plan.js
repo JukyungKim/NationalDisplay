@@ -43,13 +43,31 @@ function onClickSensorItem(sensorIndex){
 
     selectedSensorIndex = sensorIndex;
 
-    document.getElementById("smoke").setAttribute('stroke-dasharray', sensorArray[sensorIndex].smoke + "," + "100");
-    document.getElementById("temp").setAttribute('stroke-dasharray', sensorArray[sensorIndex].temp + "," + "100");
-    document.getElementById("gas").setAttribute('stroke-dasharray', sensorArray[sensorIndex].gas + "," + "100");
+    if(sensorArray[selectedSensorIndex].id != null) {    
+        document.getElementById("smoke").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].smoke + "," + "100");
+        document.getElementById("temp").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].temp + "," + "100");
+        document.getElementById("gas").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].gas + "," + "100");
 
-    document.getElementById("smoke_value").textContent = sensorArray[sensorIndex].smoke + "%";
-    document.getElementById("temp_value").textContent = sensorArray[sensorIndex].temp + "ºC";
-    document.getElementById("gas_value").textContent = sensorArray[sensorIndex].gas + "%";
+        document.getElementById("smoke_value").textContent = sensorArray[selectedSensorIndex].smoke + "%";
+        document.getElementById("temp_value").textContent = sensorArray[selectedSensorIndex].temp + "ºC";
+        document.getElementById("gas_value").textContent = sensorArray[selectedSensorIndex].gas + "%";
+    }
+    else{
+        document.getElementById("smoke").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].smoke + "," + "100");
+        document.getElementById("temp").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].temp + "," + "100");
+        document.getElementById("gas").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].gas + "," + "100");
+
+        document.getElementById("smoke_value").textContent = 0 + "%";
+        document.getElementById("temp_value").textContent = 0 + "ºC";
+        document.getElementById("gas_value").textContent = 0 + "%";
+    }
+    // document.getElementById("smoke").setAttribute('stroke-dasharray', sensorArray[sensorIndex].smoke + "," + "100");
+    // document.getElementById("temp").setAttribute('stroke-dashasrray', sensorArray[sensorIndex].temp + "," + "100");
+    // document.getElementById("gas").setAttribute('stroke-dasharray', sensorArray[sensorIndex].gas + "," + "100");
+
+    // document.getElementById("smoke_value").textContent = sensorArray[sensorIndex].smoke + "%";
+    // document.getElementById("temp_value").textContent = sensorArray[sensorIndex].temp + "ºC";
+    // document.getElementById("gas_value").textContent = sensorArray[sensorIndex].gas + "%";
 }
 
 function requestSensorData(){
@@ -122,14 +140,26 @@ connection.on("ReceiveSensorData", function (sensor, index) {
         });
         // dragobject.move(300, 300);
     }
-    
-    document.getElementById("smoke").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].smoke + "," + "100");
-    document.getElementById("temp").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].temp + "," + "100");
-    document.getElementById("gas").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].gas + "," + "100");
 
-    document.getElementById("smoke_value").textContent = sensorArray[selectedSensorIndex].smoke + "%";
-    document.getElementById("temp_value").textContent = sensorArray[selectedSensorIndex].temp + "ºC";
-    document.getElementById("gas_value").textContent = sensorArray[selectedSensorIndex].gas + "%";
+    console.log("sensor array length : " + sensorArray.length);
+    if(sensorArray[selectedSensorIndex].id != null) {    
+        document.getElementById("smoke").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].smoke + "," + "100");
+        document.getElementById("temp").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].temp + "," + "100");
+        document.getElementById("gas").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].gas + "," + "100");
+
+        document.getElementById("smoke_value").textContent = sensorArray[selectedSensorIndex].smoke + "%";
+        document.getElementById("temp_value").textContent = sensorArray[selectedSensorIndex].temp + "ºC";
+        document.getElementById("gas_value").textContent = sensorArray[selectedSensorIndex].gas + "%";
+    }
+    else{
+        document.getElementById("smoke").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].smoke + "," + "100");
+        document.getElementById("temp").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].temp + "," + "100");
+        document.getElementById("gas").setAttribute('stroke-dasharray', sensorArray[selectedSensorIndex].gas + "," + "100");
+
+        document.getElementById("smoke_value").textContent = 0 + "%";
+        document.getElementById("temp_value").textContent = 0 + "ºC";
+        document.getElementById("gas_value").textContent = 0 + "%";
+    }
 
     // var li = document.createElement("li");
     // document.getElementById("messagesList").appendChild(li);

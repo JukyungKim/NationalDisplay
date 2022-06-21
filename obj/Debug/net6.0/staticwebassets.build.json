@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xQMGwdZ0nPUuseVYAHULNQLbDAZCeXyM3nKDKBHZfUU=",
+  "Hash": "VfRwGOBm8E6uu8FhLECq7manXr4Hpb0X63Xhnf92Xs8=",
   "Source": "NationalDisplay",
   "BasePath": "_content/NationalDisplay",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Kim\\Project\\.NET\\NationalDisplay\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\NationalDisplay.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\css\\monitor\\login.css",
+      "SourceId": "NationalDisplay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\",
+      "BasePath": "_content/NationalDisplay",
+      "RelativePath": "css/monitor/login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\monitor\\login.css"
     },
     {
       "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\css\\monitor\\plan.css",
@@ -185,6 +202,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\test.png"
+    },
+    {
+      "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\js\\monitor\\login.js",
+      "SourceId": "NationalDisplay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\",
+      "BasePath": "_content/NationalDisplay",
+      "RelativePath": "js/monitor/login.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\monitor\\login.js"
     },
     {
       "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\js\\monitor\\plan.js",
@@ -1239,6 +1273,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\sensor_pos\\sensor1",
+      "SourceId": "NationalDisplay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\",
+      "BasePath": "_content/NationalDisplay",
+      "RelativePath": "sensor_pos/sensor1",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\sensor_pos\\sensor1"
     },
     {
       "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\sensor_pos\\sensor33",

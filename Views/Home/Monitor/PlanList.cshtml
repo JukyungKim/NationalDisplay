@@ -7,12 +7,15 @@
 
 <head>
     <script src="~/js/Monitor/planlist.js"></script>
-    <link rel="stylesheet" href="~/css/monitor/planlist.css">
+    <link rel="stylesheet" href="~/css/monitor/planlist.css?after">
 </head>
 
 <body>
+    
     <div id="wrapper">
-
+        <div class="region_title">
+            재난 관리 관제 시스템
+        </div>
         <table border=3 id="table_detail" align=center cellpadding=10>
 
             <tr>
@@ -35,7 +38,7 @@
                     <td>@info[5]</td>
                     <td>
                         <form asp-controller="PlanList" asp-action="LoadPlan" method="post">
-                            <input type="hidden" value=@info[0] name="id" />
+                            <input type="hidden" value="@info[0]" name="id" />
                             <input id="load_plan" type='submit' value="불러오기" />
                         </form>
                     </td>

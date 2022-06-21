@@ -16328,6 +16328,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Kim\\Project\\.NET\\NationalDisplay\\Views\\Home\\Monitor\\Login.cshtml",
+      "TargetPath": "Views\\Home\\Monitor\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Kim\\Project\\.NET\\NationalDisplay\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"

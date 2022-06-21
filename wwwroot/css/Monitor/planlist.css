@@ -60,3 +60,12 @@
 #table_detail .hidden_row {
     display: none;
 }
+
+.region_title{
+    color: white;
+    font-size: 350%;
+    font-weight: bold;
+    text-align: center;
+    height: 6%;
+    width: 100%;
+}
