@@ -41,6 +41,7 @@ app.MapControllerRoute(
 // app.UseWebSockets(webSocketOptions);
 
 app.MapHub<SensorHub>("/sensorHub");
+app.MapHub<AccountHub>("/accountHub");
 
 Console.WriteLine("app run");
 app.Run();

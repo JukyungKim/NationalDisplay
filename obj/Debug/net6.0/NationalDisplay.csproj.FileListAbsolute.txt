@@ -31,3 +31,14 @@ D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\runtimes\unix\lib\net6.0\Sy
 D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\Kim\Project\.NET\NationalDisplay\obj\Debug\net6.0\NationalDisplay.csproj.CopyComplete
 D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\libman.json
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\System.Web.Razor.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\System.Web.Helpers.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\System.Web.WebPages.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\Npgsql.dll
+D:\Kim\Project\.NET\NationalDisplay\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

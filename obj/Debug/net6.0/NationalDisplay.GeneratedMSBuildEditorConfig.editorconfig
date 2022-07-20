@@ -23,6 +23,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNb25pdG9yXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Kim/Project/.NET/NationalDisplay/Views/Home/Monitor/LogInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNb25pdG9yXExvZ0luZm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Kim/Project/.NET/NationalDisplay/Views/Home/Monitor/Password.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNb25pdG9yXFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Kim/Project/.NET/NationalDisplay/Views/Home/Monitor/Plan.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNb25pdG9yXFBsYW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -37,7 +37,7 @@
                     <td>@info[4]</td>
                     <td>@info[5]</td>
                     <td>
-                        <form asp-controller="PlanList" asp-action="LoadPlan" method="post">
+                        <form asp-controller="PlanList" asp-action="LoadPlan" method="get">
                             <input type="hidden" value="@info[0]" name="id" />
                             <input id="load_plan" type='submit' value="불러오기" />
                         </form>

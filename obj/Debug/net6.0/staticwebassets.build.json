@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VfRwGOBm8E6uu8FhLECq7manXr4Hpb0X63Xhnf92Xs8=",
+  "Hash": "hlioKeafTNpO0ZT/gYJo8qYSSpylexiwUJn1IGqTk0A=",
   "Source": "NationalDisplay",
   "BasePath": "_content/NationalDisplay",
   "Mode": "Default",
@@ -219,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\monitor\\login.js"
+    },
+    {
+      "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\js\\monitor\\password.js",
+      "SourceId": "NationalDisplay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\",
+      "BasePath": "_content/NationalDisplay",
+      "RelativePath": "js/monitor/password.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\monitor\\password.js"
     },
     {
       "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\js\\monitor\\plan.js",
