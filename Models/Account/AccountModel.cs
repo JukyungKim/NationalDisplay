@@ -50,10 +50,105 @@ public class AccountModel
         
     // }
 
+    public static void SaveSubAccount(string id, string password)
+    {
+                // password = AccountModel.Hash(password);
+        Console.WriteLine("Save account : {0}, {1}", id, password);
+
+        using (var conn = new NpgsqlConnection(
+                    "host=localhost;username=postgres;password=1234;database=displaydb"))
+        {
+            try
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = String.Format("INSERT INTO account (id, password) VALUES('{0}', '{1}')", id, password);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        Console.WriteLine(cmd.CommandText);
+                        while (reader.Read())
+                        {
+                            Console.Write(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+    }
+
+    public static void LoadSubAccount()
+    {
+        using (var conn = new NpgsqlConnection(
+                    "host=localhost;username=postgres;password=1234;database=displaydb"))
+        {
+            try
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = String.Format("SELECT password FROM sub_account");
+                
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        
+                        Console.WriteLine(cmd.CommandText);
+                        while (reader.Read())
+                        {    
+                            if(reader.IsDBNull(0) || reader.GetString(0) == ""){
+                                Console.WriteLine("Not exist password");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+    }
+
+    public static void RemoveSubAccount(string id)
+    {
+        using (var conn = new NpgsqlConnection(
+                    "host=localhost;username=postgres;password=1234;database=displaydb"))
+        {
+            try
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = String.Format("DELETE FROM sub_account WHERE id='{0}';", id);
+                    Console.WriteLine("Remove Sensor : {0}", cmd.CommandText);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        Console.WriteLine(cmd.CommandText);
+                        while (reader.Read())
+                        {
+                            Console.Write(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+    }
 
     public static void SaveAccount(string id, string password)
     {
         // password = AccountModel.Hash(password);
+        password = SecurePasswordHasher.Hash(password);
         Console.WriteLine("Save account : {0}, {1}", id, password);
 
         using (var conn = new NpgsqlConnection(

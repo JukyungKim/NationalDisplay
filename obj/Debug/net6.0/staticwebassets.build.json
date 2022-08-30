@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hlioKeafTNpO0ZT/gYJo8qYSSpylexiwUJn1IGqTk0A=",
+  "Hash": "vtDo3kWIm0mfWjAGNmWPcWOlgB/hggR7tLuJGrvFXh0=",
   "Source": "NationalDisplay",
   "BasePath": "_content/NationalDisplay",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "D:\\Kim\\Project\\.NET\\NationalDisplay\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\NationalDisplay.bundle.scp.css"
     },
     {
+      "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\css\\main\\main.css",
+      "SourceId": "NationalDisplay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\",
+      "BasePath": "_content/NationalDisplay",
+      "RelativePath": "css/main/main.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\main\\main.css"
+    },
+    {
       "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\css\\monitor\\login.css",
       "SourceId": "NationalDisplay",
       "SourceType": "Discovered",
@@ -66,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\monitor\\login.css"
+    },
+    {
+      "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\css\\monitor\\manageaccount.css",
+      "SourceId": "NationalDisplay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\",
+      "BasePath": "_content/NationalDisplay",
+      "RelativePath": "css/monitor/manageaccount.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\monitor\\manageaccount.css"
     },
     {
       "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\css\\monitor\\plan.css",
@@ -204,6 +238,23 @@
       "OriginalItemSpec": "wwwroot\\images\\test.png"
     },
     {
+      "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\js\\main\\main.js",
+      "SourceId": "NationalDisplay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\",
+      "BasePath": "_content/NationalDisplay",
+      "RelativePath": "js/main/main.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\main\\main.js"
+    },
+    {
       "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\js\\monitor\\login.js",
       "SourceId": "NationalDisplay",
       "SourceType": "Discovered",
@@ -219,6 +270,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\monitor\\login.js"
+    },
+    {
+      "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\js\\monitor\\manageaccount.js",
+      "SourceId": "NationalDisplay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\",
+      "BasePath": "_content/NationalDisplay",
+      "RelativePath": "js/monitor/manageaccount.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\monitor\\manageaccount.js"
     },
     {
       "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\js\\monitor\\password.js",

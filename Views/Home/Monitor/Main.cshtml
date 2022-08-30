@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Main Page";
+}
+
+<link rel="stylesheet" href="~/css/main/main.css?after">
+<script src="~/js/main/main.js?after"></script>  
+
+<!DOCTYPE html>
+
+<header>
+
+</header>
+<body>
+    <div class="title">
+        재난 관리 관제 소프트웨어
+    </div>
+    <div class="container">
+        <form method="get">
+            <button class="button" id="btn-1" asp-controller="Main" asp-action="ManageAccount">계정 관리</button>
+        </form>
+        <form method="get">
+            <button class="button" id="btn-2" asp-controller="Main" asp-action="Display">관제</button>
+        </form>
+    </div>
+</body>
+
+
+

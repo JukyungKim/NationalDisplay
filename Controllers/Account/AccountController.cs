@@ -34,9 +34,12 @@ public class AccountController: Controller
             return NoContent();
         }
         else if(ok == 1){
+            return View("views/home/monitor/main.cshtml");
+            /*
             PlanListController p = new PlanListController();
             return p.Index();
             // return View("/views/home/monitor/planlist.cshtml");
+            */
         }
         else{
             Console.WriteLine("Password not exist");
@@ -118,6 +121,13 @@ public class AccountController: Controller
     {
         Console.WriteLine("Log info");
         return View("/views/home/monitor/loginfo.cshtml");
+    }
+
+    public IActionResult RemoveSubAccount(string id)
+    {
+        Console.WriteLine("Remove sub account : " + id);
+        AccountModel.RemoveSubAccount(id);
+        return Redirect("/main/manageaccount");
     }
 }
 

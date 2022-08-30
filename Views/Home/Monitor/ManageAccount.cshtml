@@ -1,0 +1,210 @@
+@model NationalDisplay.Models.AccountModel
+@using Npgsql
+@{
+  var currentCount = 0;
+
+  void IncrementCount()
+  {
+    currentCount++;
+  }
+}
+<head>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.js"></script>
+  <link rel="stylesheet" href="~/css/monitor/manageaccount.css?after">
+  <script src="~/js/signalr/dist/browser/signalr.js"></script>
+  <script src="~/js/monitor/manageaccount.js"></script>  
+  
+</head>
+
+<header>
+</header>
+<body>
+  <div class="title">
+        계정 등록
+    </div>
+  <button class="btn_add_sensor">계정 추가</button>
+  @* <button class="openBtn">Modal2</button> *@
+  <table>
+    <thread>
+      <tr>
+        <th>ID</th>
+        <th>삭제</th>
+      </tr>
+    </thread>
+    <tbody>
+      @using (var conn = new NpgsqlConnection(
+                    "host=localhost;username=postgres;password=1234;database=displaydb"))
+        {
+            try
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = String.Format("SELECT * FROM sub_account ORDER BY id DESC");
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        Console.WriteLine(cmd.CommandText);
+                        while (reader.Read())
+                        {
+                            @* Console.Write(reader.GetString(0) + " ");
+                            Console.Write(reader.GetString(1) + " ");
+                            Console.Write(reader.GetString(2) + " ");
+                            Console.Write(reader.GetString(3) + " ");
+                            Console.Write(reader.GetString(4) + " ");
+                            Console.Write(reader.GetString(5) + " ");
+                            Console.Write(reader.GetString(6) + " ");
+                            Console.Write("\n"); *@
+                            
+                            @* int length = 0;
+                            while(reader.Read()){
+                              length++;
+                            } *@
+
+                            <tr>
+                              @for(int i = 0; i < 1; i++){
+                                if(reader.IsDBNull(i)){
+                                  Console.WriteLine("String is null");
+                                  <td></td>
+                                }
+                                else{
+                                  <th>@reader.GetString(i)</th>
+                                }
+                              }
+                              @* <td>@reader.GetString(0)</td>
+                              <td>@reader.GetString(1)</td>
+                              <td>@reader.GetString(2)</td>
+                              <td>@reader.GetString(3)</td>
+                              <td>@reader.GetString(4)</td>
+                              <td>@reader.GetString(5)</td>
+                              <td>@reader.GetString(6)</td>
+                              <td>@reader.GetString(7)</td> *@
+                              <th>
+                                <form asp-controller="Account" asp-action="RemoveSubAccount" method="post">
+                                  <input type="hidden" value=@reader.GetString(0) name="id" />
+                                  <input id="load_plan" type='submit' value="삭제" />
+                                </form>
+                              </th>
+                            </tr>
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+    </tbody>
+  </table>
+  <div id="table_title_region">
+    
+  </div>
+  <div id="table_item_region">
+  </div>
+
+
+
+  @* Chart *@
+  @* <div class="chart">
+    @using (var conn = new NpgsqlConnection(
+                    "host=localhost;username=postgres;password=1234;database=nationaldb"))
+        {
+            try
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = String.Format("SELECT * FROM sensor_info ORDER BY id DESC");
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        Console.WriteLine(cmd.CommandText);
+                        while (reader.Read())
+                        {
+                            Console.Write(reader.GetString(0) + " ");
+                            Console.Write(reader.GetString(1) + " ");
+                            Console.Write(reader.GetString(2) + " ");
+                            Console.Write(reader.GetString(3) + " ");
+                            Console.Write(reader.GetString(4) + " ");
+                            Console.Write(reader.GetString(5) + " ");
+                            Console.Write(reader.GetString(6) + " ");
+                            Console.Write("\n");
+                            <div class="sensor_info">
+
+                              <p2>@reader.GetString(0)</p2>
+                              <p2>@reader.GetString(1)</p2>
+                              <p2>@reader.GetString(2)</p2>
+                              <p2>@reader.GetString(3)</p2>
+                              <p2>@reader.GetString(4)</p2>
+                              <p2>@reader.GetString(5)</p2>
+                              <p2>@reader.GetString(6)</p2>
+
+                            </div>
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+  </div> *@
+    @* Modal Popup 1 *@
+  @* <button class="btn_add_sensor">센서 추가</button> *@
+  <div class="background">
+    <div class="window">
+      <div class="popup">
+        <form asp-controller="Sensor" asp-action="RegistSensor" method="post" id="regist_sensor_form">
+          <p id="sensor_info_br"></p><br>
+          <p style="display:inline" class="sensor_info">센서ID</p>  <input type="text" class="sensor_info_input" id="sensor_id1" name="sensor_id"><br>
+          <p style="display:inline" class="sensor_info">주소</p>  <input type="text" class="sensor_info_input" name="address"><br>
+          <p style="display:inline" class="sensor_info">건물 이름</p>  <input type="text" class="sensor_info_input" name="building_name"><br>
+          <p style="display:inline" class="sensor_info">동</p>  <input type="text" class="sensor_info_input" name="dong"><br>
+          <p style="display:inline" class="sensor_info">층</p>  <input type="text" class="sensor_info_input" name="floor"><br>
+          <p style="display:inline" class="sensor_info">호</p>  <input type="text" class="sensor_info_input" name="ho"><br>
+          <p style="display:inline" class="sensor_info">번호</p>  <input type="text" class="sensor_info_input" name="number"><br>
+          <p style="display:inline" class="sensor_info">도면 이름</p>  <input type="text" class="sensor_info_input" name="plan"><br>
+          @* <p style="display:inline" class="sensor_info">좌표 X</p>  <input type="text" class="sensor_info_input" name="x"><br>
+          <p style="display:inline" class="sensor_info">좌표 Y</p>  <input type="text" class="sensor_info_input" name="y"><br> *@
+        </form>
+        <button type="submit" form="regist_sensor_form" class="close" onclick="checkSensorId()">추가</button>
+        <button class="cancel">취소</button>
+      </div>
+    </div>
+  </div>
+
+  @* Modal Popup 2 *@
+  @* <button class="openBtn">Modal2</button> *@
+  <div class="modal hidden">
+    <div class="bg"></div>
+    <div class="modalBox">
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quam nobis quis corrupti amet maxime
+        neque, optio, in illo, voluptatibus consequuntur! Rerum quo ea nulla qui, maxime consectetur magni soluta!</p>
+      <button class="closeBtn">✖</button>
+    </div>
+  </div>
+</body>
+
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
+
+<style>
+  #table_title_region {
+    background: yellow;
+    overflow: hidden;
+  }
+
+  p1 {
+    float: left;
+    padding: 30px;
+  }
+  p2{
+    width: 6%;
+    padding: 50px;
+  }
+</style>

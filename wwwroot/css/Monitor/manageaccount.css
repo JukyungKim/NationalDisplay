@@ -1,0 +1,188 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+body {
+  background: #2ecc71;
+  font-size: 100.5%;
+}
+
+
+.title{
+  text-align: center;
+  font-size: 120px;
+  color:beige
+}
+
+.sensor_info{
+    position: relative;
+    color: black;
+    padding-left: 20px;
+    margin-top: 30px;
+    top: 20%;
+    display:inline-block;
+}
+
+.sensor_info_input{
+    position: fixed;
+    width: 60%;
+    left: 30%;
+}
+
+  table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+  }
+  th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  }
+
+  button {
+    float: left;
+    margin-left: 10px;
+    background: none;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    font-size: 2.6em;
+    font-weight: bold;
+    /* margin: 1em auto;
+    padding: 2em 6em; */
+    position: relative;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  
+  button::before,
+  button::after {
+    background: #fff;
+    content: '';
+    position: absolute;
+    z-index: -1;
+  }
+  
+  button:hover {
+    color: #2ecc71;
+  }
+
+
+
+
+/* Modal Popup 1 */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    
+    /* 숨기기 */
+    z-index: -1;
+    opacity: 0;
+  }
+  
+  .btn_add_sensor {
+    opacity: 1;
+    z-index: 1000;
+    transition: all .5s;
+    background: #2ecc71;
+    /* color: red; */
+  }
+  
+  .window {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+  }
+  
+  .popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    border-color: black;
+    /* 임시 지정 */
+    width: 30%;
+    height: 30%;
+    
+    /* 초기에 약간 아래에 배치 */
+    transform: translate(-50%, -40%);
+  }
+
+  .close{
+    position:absolute;
+    background-color: rgb(255, 53, 53);
+    top: 80%;
+    left: 60%;
+}
+
+.cancel{
+  position:absolute;
+  float: left;
+  background-color: #2ecc71;
+  top: 80%;
+  left: 20%;
+}
+  .btn_add_sensor .popup {
+    transform: translate(-50%, -50%);
+    transition: all .5s;
+  }
+
+  
+
+
+
+/* Modal Popup 2 */
+button {
+    background-color: #F9B514;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal .bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .modalBox {
+    position: absolute;
+    background-color: #fff;
+    width: 400px;
+    height: 200px;
+    padding: 15px;
+  }
+
+  .modalBox button {
+    display: block;
+    width: 80px;
+    margin: 0 auto;
+  }
+
+  .hidden {
+    display: none;
+  }
+
