@@ -7,6 +7,7 @@ namespace NationalDisplay.Controllers;
 public class AccountController: Controller
 {
     private readonly ILogger<HomeController> _logger;
+    public static string account_id = "";
 
     public AccountController(ILogger<HomeController> logger)
     {
@@ -25,9 +26,11 @@ public class AccountController: Controller
     {
         Console.WriteLine("Check login : {0} {1}", id, password);
 
+
         int ok;
         ok = AccountModel.CheckAccount(id, password);
         AccountModel.SaveLogInfo(id, ok);
+        account_id = id;
 
         if(ok == 0){
             Console.WriteLine("Password wrong");
@@ -127,6 +130,16 @@ public class AccountController: Controller
     {
         Console.WriteLine("Remove sub account : " + id);
         AccountModel.RemoveSubAccount(id);
+        return Redirect("/main/manageaccount");
+    }
+
+    public IActionResult RegistSubAccount(string id, string password)
+    {
+        Console.WriteLine("Regist sub account : " + id + " " + password);
+
+        AccountModel.SaveSubAccount(id, password);
+
+
         return Redirect("/main/manageaccount");
     }
 }

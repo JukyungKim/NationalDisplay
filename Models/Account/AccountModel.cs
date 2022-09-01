@@ -53,8 +53,8 @@ public class AccountModel
     public static void SaveSubAccount(string id, string password)
     {
                 // password = AccountModel.Hash(password);
-        Console.WriteLine("Save account : {0}, {1}", id, password);
-
+        Console.WriteLine("Save sub account : {0}, {1}", id, password);
+        password = SecurePasswordHasher.Hash(password);
         using (var conn = new NpgsqlConnection(
                     "host=localhost;username=postgres;password=1234;database=displaydb"))
         {
@@ -64,7 +64,7 @@ public class AccountModel
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = String.Format("INSERT INTO account (id, password) VALUES('{0}', '{1}')", id, password);
+                    cmd.CommandText = String.Format("INSERT INTO sub_account (id, password) VALUES('{0}', '{1}')", id, password);
                     using (var reader = cmd.ExecuteReader())
                     {
                         Console.WriteLine(cmd.CommandText);
@@ -228,7 +228,12 @@ public class AccountModel
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = String.Format("SELECT password FROM account WHERE id='{0}'", id);
+                    if(id == "master"){
+                        cmd.CommandText = String.Format("SELECT password FROM account WHERE id='{0}'", id);
+                    }
+                    else{
+                        cmd.CommandText = String.Format("SELECT password FROM sub_account WHERE id='{0}'", id);
+                    }
                 
                     using (var reader = cmd.ExecuteReader())
                     {

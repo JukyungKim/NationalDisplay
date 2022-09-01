@@ -12,7 +12,7 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.js"></script>
   <link rel="stylesheet" href="~/css/monitor/manageaccount.css?after">
   <script src="~/js/signalr/dist/browser/signalr.js"></script>
-  <script src="~/js/monitor/manageaccount.js"></script>  
+  <script src="~/js/monitor/manageaccount.js?after"></script>  
   
 </head>
 
@@ -22,7 +22,10 @@
   <div class="title">
         계정 등록
     </div>
-  <button class="btn_add_sensor">계정 추가</button>
+    @if(NationalDisplay.Controllers.AccountController.account_id == "master"){
+          <button class="btn_add_sensor">계정 추가</button>
+      }
+  
   @* <button class="openBtn">Modal2</button> *@
   <table>
     <thread>
@@ -156,20 +159,15 @@
   <div class="background">
     <div class="window">
       <div class="popup">
-        <form asp-controller="Sensor" asp-action="RegistSensor" method="post" id="regist_sensor_form">
+        <form asp-controller="Account" asp-action="RegistSubAccount" method="post" id="regist_sub_account_form">
           <p id="sensor_info_br"></p><br>
-          <p style="display:inline" class="sensor_info">센서ID</p>  <input type="text" class="sensor_info_input" id="sensor_id1" name="sensor_id"><br>
-          <p style="display:inline" class="sensor_info">주소</p>  <input type="text" class="sensor_info_input" name="address"><br>
-          <p style="display:inline" class="sensor_info">건물 이름</p>  <input type="text" class="sensor_info_input" name="building_name"><br>
-          <p style="display:inline" class="sensor_info">동</p>  <input type="text" class="sensor_info_input" name="dong"><br>
-          <p style="display:inline" class="sensor_info">층</p>  <input type="text" class="sensor_info_input" name="floor"><br>
-          <p style="display:inline" class="sensor_info">호</p>  <input type="text" class="sensor_info_input" name="ho"><br>
-          <p style="display:inline" class="sensor_info">번호</p>  <input type="text" class="sensor_info_input" name="number"><br>
-          <p style="display:inline" class="sensor_info">도면 이름</p>  <input type="text" class="sensor_info_input" name="plan"><br>
+          <p style="display:inline" class="sensor_info">ID</p>  <input type="text" class="sensor_info_input" id="sensor_id1" name="id"><br>
+          <p style="display:inline" class="sensor_info">Password</p>  <input type="text" class="sensor_info_input" name="password"><br>
+
           @* <p style="display:inline" class="sensor_info">좌표 X</p>  <input type="text" class="sensor_info_input" name="x"><br>
           <p style="display:inline" class="sensor_info">좌표 Y</p>  <input type="text" class="sensor_info_input" name="y"><br> *@
         </form>
-        <button type="submit" form="regist_sensor_form" class="close" onclick="checkSensorId()">추가</button>
+        <button type="submit" form="regist_sub_account_form" class="close" onclick="checkSensorId()">추가</button>
         <button class="cancel">취소</button>
       </div>
     </div>
