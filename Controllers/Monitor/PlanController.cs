@@ -10,7 +10,7 @@ public class PlanController : Controller
 {
     static public List<SensorData> sensorList = new List<SensorData>();
     static public int indexTest = 0;
-    [Route("home/monitor")]
+    // [Route("home/monitor")]
     public IActionResult MonitorPlan()
     {
         Console.WriteLine("Monitor plan");

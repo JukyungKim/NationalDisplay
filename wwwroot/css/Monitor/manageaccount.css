@@ -5,7 +5,7 @@ html, body{
     margin: 0px;
 }
 body {
-  background: #2ecc71;
+  background: rgb(34,57,73);
   font-size: 100.5%;
 }
 
@@ -33,12 +33,13 @@ body {
 
   table {
     width: 100%;
-    border-top: 1px solid #444444;
+    border-top: 1px solid white;
     border-collapse: collapse;
   }
   th, td {
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid white;
     padding: 10px;
+    color: white;
   }
 
   button {
@@ -67,7 +68,7 @@ body {
   }
   
   button:hover {
-    color: #2ecc71;
+    color: rgb(34,57,73);
   }
 
 
@@ -92,7 +93,7 @@ body {
     opacity: 1;
     z-index: 1000;
     transition: all .5s;
-    background: #2ecc71;
+    background: rgb(34,57,73);
     /* color: red; */
   }
   
@@ -130,7 +131,7 @@ body {
 .cancel{
   position:absolute;
   float: left;
-  background-color: #2ecc71;
+  background-color: rgb(34,57,73);
   top: 80%;
   left: 20%;
 }

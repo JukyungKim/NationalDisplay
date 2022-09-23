@@ -11,7 +11,7 @@ public class PlanListController : Controller
     public Plan plan = new Plan();
 
     private PlanListModel planListModel = new PlanListModel();
-    [Route("home/planlist")]
+    // [Route("home/planlist")]
     public IActionResult Index()
     {
         Console.WriteLine("Plan list");

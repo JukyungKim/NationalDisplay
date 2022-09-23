@@ -2,6 +2,15 @@
 //     init();
 // }
 
+setInterval(() => {
+    logout();
+}, 1000 * 60 * 10);
+
+function logout()
+{
+    window.location.href = "home/login";
+}
+
 // function init() {
 //     alert("안녕~ 세계야!!");
 // }
