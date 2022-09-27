@@ -33,16 +33,16 @@
         <h1 class = "title">로그인</h1>
         <hr>
             <form asp-controller="Account" asp-action="CheckLogin" method="post" enctype="multipart/form-data">
-                <p class = "id">ID: <input type="text" name="id"/></p>
-                <p class = "pw">PW: <input id="pw" type="password" name="password"/></p>
+                <p class = "id">ID: <input type="text" name="id" maxlength='50'/></p>
+                <p class = "pw">PW: <input id="pw" type="password" name="password" maxlength='50'/></p>
                 <input class="button" type="submit" value="로그인" onclick="login()">
             </form>
-            <form method="post">
+            @* <form method="post">
                 <button class="button" id="btn-2" asp-controller="Account" asp-action="ChangePasswordPage">비밀번호 변경</button>
             </form>
             <form method="post">
                 <button class="button" id="btn-2" asp-controller="Account" asp-action="LogInfo">로그 정보</button>
-            </form>
+            </form> *@
         <hr>
     </div>
 </body>

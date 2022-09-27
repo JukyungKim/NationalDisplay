@@ -81,6 +81,44 @@ public class AccountModel
             }
         }
     }
+    static public bool CheckSubAccount(string id)
+    {
+        using (var conn = new NpgsqlConnection(
+                    "host=localhost;username=postgres;password=1234;database=displaydb"))
+        {
+            try
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = String.Format("select * from sub_account where id='{0}';", id);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        Console.WriteLine(cmd.CommandText);
+                        // while (reader.Read())
+                        // {
+                        //     Console.Write(reader.GetString(0));
+                        // }
+                        if(reader.Read()){
+                            Console.WriteLine("Exist sub account id");
+                            return true;
+                        }
+                        else{
+                            Console.WriteLine("Not exist sub account id");
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        return false;
+    }
 
     public static void LoadSubAccount()
     {

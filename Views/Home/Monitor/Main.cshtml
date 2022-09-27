@@ -17,8 +17,25 @@
     </div>
     <div class="container">
         <form method="get">
-            <button class="button" id="btn-1" asp-controller="Main" asp-action="ManageAccount">계정 관리</button>
+            @* @if(NationalDisplay.Controllers.AccountController.account_id == "master"){
+          <button class="btn_add_sensor">계정 추가</button>
+      } *@
+      @if(NationalDisplay.Controllers.AccountController.account_id == "master"){
+        <button class="button" id="btn-1" asp-controller="Main" asp-action="ManageAccount">계정 관리</button>
+      }else{
+          @* <button disabled class="button" id="btn-1" asp-controller="Main" asp-action="ManageAccount">계정 관리</button> *@
+      }
+
+            @* <button class="button" id="btn-1" asp-controller="Main" asp-action="ManageAccount">계정 관리</button> *@
         </form>
+                    <form method="post">
+                        <button class="button" id="btn-2" asp-controller="Account" asp-action="ChangePasswordPage">비밀번호 변경</button>
+                    </form>
+                    <form method="post">
+                         @if(NationalDisplay.Controllers.AccountController.account_id == "master"){
+                            <button class="button" id="btn-2" asp-controller="Account" asp-action="LogInfo">로그 정보</button>
+                         }
+                    </form>
         <form method="get">
             <button class="button" id="btn-2" asp-controller="Main" asp-action="Display">관제</button>
         </form>

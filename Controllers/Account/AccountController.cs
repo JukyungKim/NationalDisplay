@@ -135,12 +135,13 @@ public class AccountController: Controller
 
     public IActionResult RegistSubAccount(string id, string password)
     {
-        Console.WriteLine("Regist sub account : " + id + " " + password);
+        // Console.WriteLine("Regist sub account : " + id + " " + password);
 
-        AccountModel.SaveSubAccount(id, password);
+        // AccountModel.SaveSubAccount(id, password);
 
 
-        return Redirect("/main/manageaccount");
+        // return Redirect("/main/manageaccount");
+        return NoContent();
     }
 }
 
@@ -154,5 +155,20 @@ public class AccountHub: Hub
         result = AccountModel.CheckAccount("master", password);
 
         await Clients.All.SendAsync("LoginError", result);
+    }
+
+    public async Task CreateSubAccount(string id, string password)
+    {
+        Console.WriteLine("Create Sub account : {0}, {1}", id, password);
+        bool result;
+
+        result = AccountModel.CheckSubAccount(id);
+
+        if(!result){
+            AccountModel.SaveSubAccount(id, password);
+        }
+        
+
+        await Clients.All.SendAsync("SubAccountError", result);
     }
 }

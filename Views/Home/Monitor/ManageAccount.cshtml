@@ -22,9 +22,10 @@
   <div class="title">
         계정 등록
     </div>
-    @if(NationalDisplay.Controllers.AccountController.account_id == "master"){
+    @* @if(NationalDisplay.Controllers.AccountController.account_id == "master"){
           <button class="btn_add_sensor">계정 추가</button>
-      }
+      } *@
+    <button class="btn_add_sensor">계정 추가</button>
   
   @* <button class="openBtn">Modal2</button> *@
   <table>
@@ -161,13 +162,13 @@
       <div class="popup">
         <form asp-controller="Account" asp-action="RegistSubAccount" method="post" id="regist_sub_account_form">
           <p id="sensor_info_br"></p><br>
-          <p style="display:inline" class="sensor_info">ID</p>  <input type="text" class="sensor_info_input" id="sensor_id1" name="id"><br>
-          <p style="display:inline" class="sensor_info">Password</p>  <input type="text" class="sensor_info_input" name="password"><br>
+          <p style="display:inline" class="sensor_info">ID</p>  <input type="text" class="sensor_info_input" id="sub_account_id" name="id" maxlength='50'><br>
+          <p style="display:inline" class="sensor_info">Password</p>  <input type="text" class="sensor_info_input" id="sub_account_password" name="password" maxlength='50'><br>
 
           @* <p style="display:inline" class="sensor_info">좌표 X</p>  <input type="text" class="sensor_info_input" name="x"><br>
           <p style="display:inline" class="sensor_info">좌표 Y</p>  <input type="text" class="sensor_info_input" name="y"><br> *@
         </form>
-        <button type="submit" form="regist_sub_account_form" class="close" onclick="checkSensorId()">추가</button>
+        <button type="submit" form="regist_sub_account_form" class="close" onclick="createSubAccount()">추가</button>
         <button class="cancel">취소</button>
       </div>
     </div>
