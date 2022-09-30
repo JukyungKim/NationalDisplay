@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vtDo3kWIm0mfWjAGNmWPcWOlgB/hggR7tLuJGrvFXh0=",
+  "Hash": "nc2xUvZX1gBTVNMwGo7uF5Dokbl83ME5MRHMQH6CfeY=",
   "Source": "NationalDisplay",
   "BasePath": "_content/NationalDisplay",
   "Mode": "Default",
@@ -1377,6 +1377,23 @@
       "OriginalItemSpec": "wwwroot\\sensor_pos\\sensor1"
     },
     {
+      "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\sensor_pos\\sensor3",
+      "SourceId": "NationalDisplay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\",
+      "BasePath": "_content/NationalDisplay",
+      "RelativePath": "sensor_pos/sensor3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\sensor_pos\\sensor3"
+    },
+    {
       "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\sensor_pos\\sensor33",
       "SourceId": "NationalDisplay",
       "SourceType": "Discovered",
@@ -1409,6 +1426,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\sensor_pos\\sensor34"
+    },
+    {
+      "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\sensor_pos\\sensor4",
+      "SourceId": "NationalDisplay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\",
+      "BasePath": "_content/NationalDisplay",
+      "RelativePath": "sensor_pos/sensor4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\sensor_pos\\sensor4"
     }
   ]
 }

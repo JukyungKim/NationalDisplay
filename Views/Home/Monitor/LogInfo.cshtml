@@ -13,8 +13,11 @@
     
     <div id="wrapper">
         <div class="region_title">
-            재난 관리 관제 시스템
+            로그 정보
         </div>
+        <form asp-controller="Account" asp-action="DownloadDocument" method="post" enctype="multipart/form-data">
+                <input class="button" type="submit" value="로그 정보 다운로드">
+            </form>
         <table border=3 id="table_detail" align=center cellpadding=10>
 
             <tr>

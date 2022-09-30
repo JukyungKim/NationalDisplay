@@ -20,15 +20,15 @@ body {
   }
   
   /* GENERAL BUTTON STYLING */
-  button,
-  button::after {
+  .button,
+  .button::after {
     -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
     -o-transition: all 0.3s;
       transition: all 0.3s;
   }
   
-  button {
+  .button {
     float: left;
     margin-left: 500px;
     background: none;
@@ -46,15 +46,15 @@ body {
     height: 500px;
   }
   
-  button::before,
-  button::after {
+  .button::before,
+  .button::after {
     background: #fff;
     content: '';
     position: absolute;
     z-index: -1;
   }
   
-  button:hover {
+  .button:hover {
     color: rgb(34,57,73);
   }
   

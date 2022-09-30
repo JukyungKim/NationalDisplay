@@ -13,8 +13,11 @@
 </header>
 <body>
     <div class="title">
-        재난 관리 관제 소프트웨어 V1.0
+        재난 관리 관제 소프트웨어 v1.0
     </div>
+    <form method="post">
+        <button class="button_logout" id="logout" asp-controller="Account" asp-action="Logout">로그아웃</button>
+    </form>
     <div class="container">
         <form method="get">
             @* @if(NationalDisplay.Controllers.AccountController.account_id == "master"){

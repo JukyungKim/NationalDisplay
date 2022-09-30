@@ -37,7 +37,8 @@ public class AccountController: Controller
             return NoContent();
         }
         else if(ok == 1){
-            return View("views/home/monitor/main.cshtml");
+            // return View("views/home/monitor/main.cshtml");
+            return RedirectToAction("Index", "Main");
             /*
             PlanListController p = new PlanListController();
             return p.Index();
@@ -142,6 +143,21 @@ public class AccountController: Controller
 
         // return Redirect("/main/manageaccount");
         return NoContent();
+    }
+    public ActionResult DownloadDocument()
+    {
+        Console.WriteLine("Download documnet");
+        string filePath = "c:/log_info_d.csv";
+        string fileName = "log_info_d.csv";
+
+        byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
+
+        return File(fileBytes, "application/force-download", fileName);
+    }
+
+    public IActionResult Logout()
+    {
+        return RedirectToAction("Login", "Main");
     }
 }
 

@@ -16,4 +16,13 @@ public class MainController: Controller
             PlanListController p = new PlanListController();
             return p.Index();
     }
+    public IActionResult Index()
+    {
+        return View("/views/home/monitor/main.cshtml");
+    }
+
+    public IActionResult Login()
+    {
+        return View("/views/home/monitor/Login.cshtml");
+    }
 }
