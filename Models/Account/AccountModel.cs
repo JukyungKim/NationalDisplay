@@ -52,9 +52,9 @@ public class AccountModel
 
     public static void SaveSubAccount(string id, string password)
     {
-                // password = AccountModel.Hash(password);
         Console.WriteLine("Save sub account : {0}, {1}", id, password);
-        password = SecurePasswordHasher.Hash(password);
+        // password = SecurePasswordHasher.Hash(password);
+        password = Sha256encrypt(password);
         using (var conn = new NpgsqlConnection(
                     "host=localhost;username=postgres;password=1234;database=displaydb"))
         {
@@ -185,8 +185,8 @@ public class AccountModel
 
     public static void SaveAccount(string id, string password)
     {
-        // password = AccountModel.Hash(password);
-        password = SecurePasswordHasher.Hash(password);
+        // password = SecurePasswordHasher.Hash(password);
+        password = Sha256encrypt(password);
         Console.WriteLine("Save account : {0}, {1}", id, password);
 
         using (var conn = new NpgsqlConnection(
@@ -218,8 +218,8 @@ public class AccountModel
 
     public static void UpdatePassword(string id, string password)
     {
-        // password = AccountModel.Hash(password);
-        password = SecurePasswordHasher.Hash(password);
+        // password = SecurePasswordHasher.Hash(password);
+        password = Sha256encrypt(password);
         Console.WriteLine("Update password : {0}, {1}", id, password);
 
         using (var conn = new NpgsqlConnection(
@@ -231,7 +231,14 @@ public class AccountModel
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = String.Format("UPDATE account SET password='{0}' WHERE id='{1}'", password, id);
+                    // cmd.CommandText = String.Format("UPDATE account SET password='{0}' WHERE id='{1}'", password, id);
+                    if(id == "master"){
+                        cmd.CommandText = String.Format("UPDATE account SET password='{0}' WHERE id='{1}'", password, id);
+                    }
+                    else{
+                        cmd.CommandText = String.Format("UPDATE sub_account SET password='{0}' WHERE id='{1}'", password, id);
+                    }
+                
                     using (var reader = cmd.ExecuteReader())
                     {
                         Console.WriteLine(cmd.CommandText);
@@ -281,12 +288,16 @@ public class AccountModel
                         {    
                             if(reader.IsDBNull(0) || reader.GetString(0) == ""){
                                 Console.WriteLine("Not exist password");
-                                return 2;
+                                return 1;
                             }
 
                             string pass = reader.GetString(0);
                             Console.WriteLine("Input password : {0},  save password : {1}", password, pass);
-                            var result = SecurePasswordHasher.Verify(password, pass);
+                            // var result = SecurePasswordHasher.Verify(password, pass);
+                            bool result = false;
+                            if(pass == Sha256encrypt(password)){
+                                result = true;
+                            }
 
                             if(result){
                                 ok = 1;
@@ -361,7 +372,13 @@ public class AccountModel
 
         return (PasswordScore)score;
     }
-
+    public static string Sha256encrypt(string phrase)
+    {
+        UTF8Encoding encoder = new UTF8Encoding();
+        SHA256Managed sha256hasher = new SHA256Managed();
+        byte[] hashedDataBytes = sha256hasher.ComputeHash(encoder.GetBytes(phrase));
+        return Convert.ToBase64String(hashedDataBytes);
+    }
 }
 
 public static class SecurePasswordHasher

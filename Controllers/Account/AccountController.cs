@@ -58,8 +58,9 @@ public class AccountController: Controller
 
     public IActionResult ChangePassword(string password0, string password1, string password2)
     {
-        var result = AccountModel.CheckAccount("master", password0);
-
+        // var result = AccountModel.CheckAccount("master", password0);
+        var result = AccountModel.CheckAccount(NationalDisplay.Controllers.AccountController.account_id, password0);
+        
         Console.WriteLine("Change password");
         bool hasChar = false;
         bool hasNum = false;
@@ -116,7 +117,8 @@ public class AccountController: Controller
             return NoContent();
         }
         else{
-            AccountModel.UpdatePassword("master", password1);
+            Console.WriteLine("Update password : " + NationalDisplay.Controllers.AccountController.account_id + " " + password1);
+            AccountModel.UpdatePassword(NationalDisplay.Controllers.AccountController.account_id, password1);
             return View("/views/home/monitor/login.cshtml");
         }
     }
@@ -163,12 +165,12 @@ public class AccountController: Controller
 
 public class AccountHub: Hub
 {
-    public async Task LoginResult(string password)
+    public async Task LoginResult(string id, string password)
     {
         int result;
-        Console.WriteLine("Login result : " + password);
+        Console.WriteLine("Login result : " + id + " " + password);
 
-        result = AccountModel.CheckAccount("master", password);
+        result = AccountModel.CheckAccount(id, password);
 
         await Clients.All.SendAsync("LoginError", result);
     }

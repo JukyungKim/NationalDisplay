@@ -22,7 +22,7 @@ function login()
 {
     loginId = document.getElementById("id").value;
     pw = document.getElementById("pw").value;
-    connection.invoke("LoginResult", pw).catch(function (err){
+    connection.invoke("LoginResult", loginId, pw).catch(function (err){
         return console.error(err.toString());
     });
 }
