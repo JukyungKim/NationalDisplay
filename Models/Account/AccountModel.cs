@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Npgsql;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 
 namespace NationalDisplay.Models;
 
@@ -316,9 +318,28 @@ public class AccountModel
 
     public static void SaveLogInfo(string id, int pass)
     {
+         // String strHostName = string.Empty;
+        // IPHostEntry ipEntry = Dns.GetHostEntry(Dns.GetHostName());
+        // IPAddress[] addr = ipEntry.AddressList;
+
+        string ipAddress = "";
+        var host = Dns.GetHostEntry(Dns.GetHostName());
+        foreach (var ip in host.AddressList)
+        {
+            if (ip.AddressFamily == AddressFamily.InterNetwork)
+            {
+                ipAddress = ip.ToString();
+                Console.WriteLine("IP Address = " + ip.ToString());
+            }
+        }
+            
         string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:dd");
         bool pass2 = false;
-        if(pass == 1) pass2 = true;
+        string log;
+        // if(pass == 1) pass2 = true;
+        if(pass == 1) log = "로그인";
+        else if(pass == 10) log = "로그아웃";
+        else log = "로그인 실패";
         using (var conn = new NpgsqlConnection(
                     "host=localhost;username=postgres;password=1234;database=displaydb"))
         {
@@ -328,8 +349,8 @@ public class AccountModel
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = String.Format("INSERT INTO log_info (id, time, pass) VALUES('{0}', '{1}', '{2}')", 
-                        id, time, pass2.ToString());
+                    cmd.CommandText = String.Format("INSERT INTO log_info (id, time, pass, ip) VALUES('{0}', '{1}', '{2}', '{3}')", 
+                        id, time, log, ipAddress);
                     using (var reader = cmd.ExecuteReader())
                     {
                         Console.WriteLine(cmd.CommandText);

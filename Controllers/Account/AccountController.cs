@@ -159,6 +159,7 @@ public class AccountController: Controller
 
     public IActionResult Logout()
     {
+        AccountModel.SaveLogInfo(account_id, 10);
         return RedirectToAction("Login", "Main");
     }
 }

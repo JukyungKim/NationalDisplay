@@ -7,7 +7,12 @@ public class MainController: Controller
     public IActionResult ManageAccount()
     {
         
+        return RedirectToAction("ManageAccountRedirect", "Main");
+        // return View("/views/home/monitor/manageaccount.cshtml");
+    }
 
+    public IActionResult ManageAccountRedirect()
+    {
         return View("/views/home/monitor/manageaccount.cshtml");
     }
 
