@@ -12,6 +12,7 @@ body{
 
 .region_title{
     color: white;
+    margin-bottom: 10px;
     font-size: 350%;
     font-weight: bold;
     text-align: center;
@@ -29,7 +30,7 @@ body{
 
 .region_plan_graph{
     float: left;
-    width: 75%;
+    width: 65%;
     height: 94%;
 }
 
@@ -74,7 +75,7 @@ body{
     width: 550px;
     position: absolute;
     top: 7%;
-    left: 78%;
+    left: 68%;
 }
 
 

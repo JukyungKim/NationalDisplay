@@ -13,6 +13,9 @@ public class PlanController : Controller
     // [Route("home/monitor")]
     public IActionResult MonitorPlan()
     {
+        if(!AccountController.isLogin){
+            return NoContent();
+        }
         Console.WriteLine("Monitor plan");
 
         // SensorData s = new SensorData();
@@ -114,6 +117,13 @@ public class SensorHub: Hub
 
         pos[0] = (buf[4] << 24) | (buf[5] << 16) | (buf[6] << 8) | (buf[7] << 0);
         pos[1] = (buf[8] << 24) | (buf[9] << 16) | (buf[10] << 8) | (buf[11] << 0);
+
+        if(pos[0] > 1000){
+            pos[0] = 100;
+        }
+        if(pos[1] > 500){
+            pos[1] = 100;
+        }
 
         // Console.WriteLine("LoadSensorPosition:{0} {1}", pos[0], pos[1]);
         fs.Close();

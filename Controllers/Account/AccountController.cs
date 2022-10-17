@@ -8,6 +8,7 @@ public class AccountController: Controller
 {
     private readonly ILogger<HomeController> _logger;
     public static string account_id = "";
+    public static bool isLogin = false;
 
     public AccountController(ILogger<HomeController> logger)
     {
@@ -15,7 +16,7 @@ public class AccountController: Controller
  
     }
 
-    [Route("home/login")]
+    [Route("/home/login")]
     public IActionResult Login()
     {
         Console.WriteLine("Login page");
@@ -38,6 +39,7 @@ public class AccountController: Controller
         }
         else if(ok == 1){
             // return View("views/home/monitor/main.cshtml");
+            isLogin = true;
             return RedirectToAction("Index", "Main");
             /*
             PlanListController p = new PlanListController();
@@ -53,6 +55,9 @@ public class AccountController: Controller
 
     public IActionResult ChangePasswordPage()
     {
+        if(!AccountController.isLogin){
+            return NoContent();
+        }
         return View("/views/home/monitor/password.cshtml");
     }
 
@@ -125,6 +130,9 @@ public class AccountController: Controller
 
     public IActionResult LogInfo()
     {
+        if(!AccountController.isLogin){
+            return NoContent();
+        }
         Console.WriteLine("Log info");
         return View("/views/home/monitor/loginfo.cshtml");
     }
@@ -149,7 +157,7 @@ public class AccountController: Controller
     public ActionResult DownloadDocument()
     {
         Console.WriteLine("Download documnet");
-        string filePath = "c:/log_info_d.csv";
+        string filePath = "c:/safe/log_info_d.csv";
         string fileName = "log_info_d.csv";
 
         byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
@@ -160,6 +168,7 @@ public class AccountController: Controller
     public IActionResult Logout()
     {
         AccountModel.SaveLogInfo(account_id, 10);
+        isLogin = false;
         return RedirectToAction("Login", "Main");
     }
 }

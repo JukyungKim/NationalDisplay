@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nc2xUvZX1gBTVNMwGo7uF5Dokbl83ME5MRHMQH6CfeY=",
+  "Hash": "C5Bwph/OoLFUAxJ2hA6Yz1cw6uabI7dDIW6BCAdV0WQ=",
   "Source": "NationalDisplay",
   "BasePath": "_content/NationalDisplay",
   "Mode": "Default",
@@ -85,6 +85,23 @@
       "OriginalItemSpec": "wwwroot\\css\\monitor\\login.css"
     },
     {
+      "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\css\\monitor\\loginfo.css",
+      "SourceId": "NationalDisplay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\",
+      "BasePath": "_content/NationalDisplay",
+      "RelativePath": "css/monitor/loginfo.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\monitor\\loginfo.css"
+    },
+    {
       "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\css\\monitor\\manageaccount.css",
       "SourceId": "NationalDisplay",
       "SourceType": "Discovered",
@@ -100,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\monitor\\manageaccount.css"
+    },
+    {
+      "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\css\\monitor\\password.css",
+      "SourceId": "NationalDisplay",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\",
+      "BasePath": "_content/NationalDisplay",
+      "RelativePath": "css/monitor/password.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\monitor\\password.css"
     },
     {
       "Identity": "D:\\Kim\\Project\\.NET\\NationalDisplay\\wwwroot\\css\\monitor\\plan.css",

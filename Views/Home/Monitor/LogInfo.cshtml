@@ -5,7 +5,7 @@
 <head>
   @* <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.js"></script> *@
     <script src="~/js/Monitor/planlist.js"></script>
-    <link rel="stylesheet" href="~/css/monitor/planlist.css?after">
+    <link rel="stylesheet" href="~/css/monitor/loginfo.css?after">
 </head>
 
 
@@ -16,7 +16,7 @@
             로그 정보
         </div>
         <form asp-controller="Account" asp-action="DownloadDocument" method="post" enctype="multipart/form-data">
-                <input class="button" type="submit" value="로그 정보 다운로드">
+                <input id="button_log_info" class="button" type="submit" value="로그 정보 다운로드">
             </form>
         <table border=3 id="table_detail" align=center cellpadding=10>
 
@@ -26,6 +26,7 @@
                 <th>접속 여부</th>
                 <th>IP</th>
             </tr>
+            <tbody>
             @using (var conn = new NpgsqlConnection(
                     "host=localhost;username=postgres;password=1234;database=displaydb"))
             {
@@ -37,7 +38,12 @@
                         Console.WriteLine("Start read log_info");
                         cmd.Connection = conn;
                         cmd.CommandText = String.Format("SELECT id, time, pass, ip FROM log_info ORDER BY time DESC");
-                        using (StreamWriter csv = new StreamWriter(@"C:\log_info_d.csv"))
+
+                        string folder = "c:/safe";
+                        DirectoryInfo di = new DirectoryInfo(folder);
+                        if(di.Exists == false) di.Create();
+
+                        using (StreamWriter csv = new StreamWriter(@"C:\safe\log_info_d.csv"))
                         {
                             using (var reader = cmd.ExecuteReader())
                             {
@@ -91,6 +97,7 @@
 
             }
         }
+        </tbody>
         </table>
     </div>
 </body>

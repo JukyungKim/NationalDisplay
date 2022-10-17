@@ -19,5 +19,5 @@ setInterval(() => {
 
 function logout()
 {
-    window.location.href = "home/login";
+    window.location.href = "/home/login";
 }

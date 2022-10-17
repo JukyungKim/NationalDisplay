@@ -15,7 +15,7 @@ setInterval(() => {
 
 function logout()
 {
-    window.location.href = "home/login";
+    window.location.href = "/home/login";
 }
 function init() {
     // alert("안녕~ 세계야!!");

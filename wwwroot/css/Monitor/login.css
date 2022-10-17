@@ -16,6 +16,7 @@ body {
 }
 
 
+
   
   .container {
     padding: 2em;
@@ -84,4 +85,21 @@ body {
   #btn-2:hover:after {
     width: 100%;
   } */
+}
+
+#id{
+  margin-left: 10px;
+}
+
+.id{
+  color: white;
+}
+.pw{
+  color: white;
+}
+
+.title_sub{
+  margin-left: 120px;
+  font-size: 80px;
+  color:beige
 }

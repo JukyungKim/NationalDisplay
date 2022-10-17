@@ -1,0 +1,53 @@
+#button_log_info{
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+#wrapper{
+    background-color: rgb(34,57,73);
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+ 
+}
+
+#load_plan{
+    background-color: antiquewhite;
+    height: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+ 
+
+#table_detail {
+    width: 1500px;
+    float: left;
+    margin-left: 50px;
+    margin-top: 20px;
+    text-align: left;
+    border-collapse: collapse;
+    color: white;
+    border: #A4A4A4;
+}
+
+#table_detail tr:hover {
+    background-color: #555555;
+}
+
+#table_detail .hidden_row {
+    display: none;
+}
+
+.region_title{
+    color: white;
+    font-size: 350%;
+    font-weight: bold;
+    text-align: center;
+    height: 6%;
+    width: 100%;
+}
+
+body, #wrapper{
+    height: 100%; overflow: auto; 
+}
+

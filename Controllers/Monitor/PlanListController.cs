@@ -14,6 +14,9 @@ public class PlanListController : Controller
     // [Route("home/planlist")]
     public IActionResult Index()
     {
+        if(!AccountController.isLogin){
+            return NoContent();
+        }
         Console.WriteLine("Plan list");
 
         planListBuf.Clear();
@@ -32,6 +35,9 @@ public class PlanListController : Controller
 
     public IActionResult LoadPlan(string id)
     {
+        if(!AccountController.isLogin){
+            return NoContent();
+        }
         Console.WriteLine("Plan id : " + id);
 
         SensorTask.planId = id;
@@ -48,7 +54,9 @@ public class PlanListController : Controller
 
     public IActionResult LoadPlanList()
     {        
-
+        if(!AccountController.isLogin){
+            return NoContent();
+        }
         plan.planList = planListBuf;
         foreach(var p in planListBuf){
             Console.WriteLine("aa:" + p[0]);

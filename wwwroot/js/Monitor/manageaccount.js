@@ -16,6 +16,11 @@ setInterval(() => {
     logout();
 }, 1000 * 60 * 10);
 
+function logout()
+{
+    window.location.href = "/home/login";
+}
+
 function createSubAccount()
 {
     id = document.getElementById("sub_account_id").value;
@@ -70,18 +75,19 @@ function checkId(id){
     if(!existData(id))
         return false;
 
-    var idRegExp = /^[a-zA-z0-9]{4,50}$/; //아이디 유효성 검사
+    var idRegExp = /^[a-zA-z0-9]{5,50}$/; //아이디 유효성 검사
     var pre = id.substr(0, 1);
     var idRegNum = /^[0-9]$/;
 
     if(id === "admin" || id === "administrator" || id === "root" || id === "system" || id === "administration"
-        || idRegNum.test(pre)){
+        || idRegNum.test(pre)
+        || id === "Admin" || id === "Administrator" || id === "Administration"){
         alert("허용할 수 없는 ID입니다.");
         return false;
     }
 
     if(!idRegExp.test(id)){
-        alert("ID는 영문,숫자 4~50자리로 입력해야 합니다.");
+        alert("ID는 5~50자리 영문자 또는 영문자+숫자 조합입니다.");
         return false;
     }
     
@@ -98,10 +104,7 @@ function existData(value){
 
 
 
-function logout()
-{
-    window.location.href = "home/login";
-}
+
 
 function show() {
     document.querySelector(".background").className = "background btn_add_sensor";

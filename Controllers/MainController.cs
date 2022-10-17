@@ -13,6 +13,9 @@ public class MainController: Controller
 
     public IActionResult ManageAccountRedirect()
     {
+        if(!AccountController.isLogin){
+            return NoContent();
+        }
         return View("/views/home/monitor/manageaccount.cshtml");
     }
 
@@ -23,11 +26,16 @@ public class MainController: Controller
     }
     public IActionResult Index()
     {
+        if(!AccountController.isLogin){
+            return NoContent();
+        }
         return View("/views/home/monitor/main.cshtml");
     }
 
     public IActionResult Login()
     {
+        AccountController.isLogin = false;
+        Console.WriteLine("Login page");
         return View("/views/home/monitor/Login.cshtml");
     }
 }

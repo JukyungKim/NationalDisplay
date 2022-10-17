@@ -30,10 +30,10 @@
 </head>
 <body>
     <div class = "login">
-        <h1 class = "title">로그인</h1>
+        <h1 class = "title_sub">로그인</h1>
         <hr>
             <form asp-controller="Account" asp-action="CheckLogin" method="post" enctype="multipart/form-data">
-                <p class = "id">ID: <input id='id' type="text" name="id" maxlength='50'/></p>
+                <p class = "id">ID: <input id="id" type="text" name="id" maxlength='50'/></p>
                 <p class = "pw">PW: <input id="pw" type="password" name="password" maxlength='50'/></p>
                 <input class="button" type="submit" value="로그인" onclick="login()">
             </form>
@@ -55,6 +55,7 @@
     font-size: 80px;
     color:beige
 }
+
 body {
     background: rgb(34,57,73);
     font-size: 150.5%;

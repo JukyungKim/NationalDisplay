@@ -294,10 +294,14 @@ public class AccountModel
                             }
 
                             string pass = reader.GetString(0);
+                            pass = pass.Replace(" ", String.Empty);
                             Console.WriteLine("Input password : {0},  save password : {1}", password, pass);
                             // var result = SecurePasswordHasher.Verify(password, pass);
                             bool result = false;
-                            if(pass == Sha256encrypt(password)){
+                            Console.WriteLine("Encrypt : " + pass + " " + Sha256encrypt(password));
+                            Console.WriteLine("Encrypt : " + pass.Length + " " + Sha256encrypt(password).Length);
+                            if(pass.Equals(Sha256encrypt(password))){
+                                Console.WriteLine("Password OK");
                                 result = true;
                             }
 
